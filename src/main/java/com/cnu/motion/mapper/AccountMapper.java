@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface AccountMapper {
-    void addeNewUser(UserDTO user);
-    UserDTO getUserInfoById(String userId);
+    void addNewUser(UserDTO user);
+    UserDTO getUserByUserId(UserDTO user);
 }

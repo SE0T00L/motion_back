@@ -4,8 +4,6 @@ import com.cnu.motion.DTO.UserDTO;
 import com.cnu.motion.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,9 +18,7 @@ public class AccountService {
     @Transactional(rollbackFor = SQLException.class)
     public void addNewUser(UserDTO user) throws DuplicateKeyException, Exception {
         try {
-            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            user.setUserPwd(passwordEncoder.encode(user.getUserPwd()));
-            accountMapper.addeNewUser(user);
+            accountMapper.addNewUser(user);
         } catch (DuplicateKeyException e) {
             throw new DuplicateKeyException("Duplicated userId : User is already exist");
         }
@@ -30,5 +26,9 @@ public class AccountService {
             e.printStackTrace();
             throw new Exception();
         }
+    }
+
+    public UserDTO getUserByUserId(UserDTO user) {
+        return accountMapper.getUserByUserId(user);
     }
 }
