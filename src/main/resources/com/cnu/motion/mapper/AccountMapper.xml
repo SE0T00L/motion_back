@@ -7,17 +7,9 @@
         VALUES (#{userId}, #{userPwd}, date_format(now(), '%y%m%c'), #{userName}, #{userPhone}, #{userEmail}, date_format(#{userBirth}, '%y%m%c'), "USER")
     </insert>
 
-    <select id="getUserInfoById" parameterType="String" resultType="com.cnu.motion.DTO.UserDTO">
+    <select id="getUserByUserId" parameterType="com.cnu.motion.DTO.UserDTO" resultType="com.cnu.motion.DTO.UserDTO">
         SELECT *
         FROM Accounts acnt
         WHERE acnt.userId = #{userId}
-        <!--AND acnt.userPwd = #{userPwd}-->
-    </select>
-
-    <select id="getUserAuthorityById" parameterType="String" resultType="String">
-        SELECT authorityName
-        FROM Authority auth
-        WHERE auth.userId = #{userId}
-        <!--AND acnt.userPwd = #{userPwd}-->
     </select>
 </mapper>
