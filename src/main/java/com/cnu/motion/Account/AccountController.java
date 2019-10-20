@@ -4,19 +4,18 @@ import com.cnu.motion.DTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class AccountController {
 
     @Autowired
     AccountService accountService;
 
-    @PostMapping("/join")
+    @PostMapping()
     public String addNewUser(@RequestBody UserDTO user) {
 
         try {
@@ -33,14 +32,12 @@ public class AccountController {
     }
 
     @PostMapping("/logout")
-    public boolean logout(SessionStatus sessionStatus) {
+    public boolean logout(HttpServletRequest request) {
         //Terminate session
-        sessionStatus.setComplete();
-        if (sessionStatus.isComplete()) {
-            return true;
-        }
+        HttpSession session = request.getSession(false);
+        session.invalidate();
 
-        return false;
+        return true;
     }
 
     @PostMapping("/login")
@@ -57,12 +54,15 @@ public class AccountController {
         return false;
     }
 
-    @PostMapping("/state")
+    @GetMapping("/state")
     public UserDTO getLoginState(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         UserDTO user = new UserDTO();
-        user.setUserId((String)session.getAttribute("userId"));
-        user.setUserRoll((String)session.getAttribute("userRoll"));
+
+        if (session != null) {
+            user.setUserId((String)session.getAttribute("userId"));
+            user.setUserRoll((String)session.getAttribute("userRoll"));
+        }
 
         return user;
     }
