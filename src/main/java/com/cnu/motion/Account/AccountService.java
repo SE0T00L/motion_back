@@ -31,4 +31,8 @@ public class AccountService {
     public UserDTO getUserByUserId(UserDTO user) {
         return accountMapper.getUserByUserId(user);
     }
+
+    public void deleteUserByUserId(UserDTO user) {
+        accountMapper.deleteUserByUserId(user);
+    }
 }

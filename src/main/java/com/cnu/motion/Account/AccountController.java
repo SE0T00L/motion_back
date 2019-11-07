@@ -66,6 +66,21 @@ public class AccountController {
 
         return user;
     }
+
+    @DeleteMapping("/{userId}")
+    public boolean deleteUser(@PathVariable("userId") String userId) {
+        UserDTO user = new UserDTO();
+        user.setUserId(userId);
+
+        try {
+            accountService.deleteUserByUserId(user);
+        }
+        catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
 }
 
 
