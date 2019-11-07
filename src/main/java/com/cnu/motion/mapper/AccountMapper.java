@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface AccountMapper {
     void addNewUser(UserDTO user);
     UserDTO getUserByUserId(UserDTO user);
+    void deleteUserByUserId(UserDTO user);
 }

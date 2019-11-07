@@ -12,4 +12,8 @@
         FROM Accounts acnt
         WHERE acnt.userId = #{userId}
     </select>
+
+    <delete id="deleteUserByUserId" parameterType="com.cnu.motion.DTO.UserDTO">
+        DELETE FROM Accounts WHERE userId = #{userId}
+    </delete>
 </mapper>
