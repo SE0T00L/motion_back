@@ -41,17 +41,18 @@ public class AccountController {
     }
 
     @PostMapping("/login")
-    public boolean login(@RequestBody UserDTO user, HttpServletRequest request) {
+    public UserDTO login(@RequestBody UserDTO user, HttpServletRequest request) {
         UserDTO storedUserInfo = accountService.getUserByUserId(user);
         if (storedUserInfo != null) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("userId", storedUserInfo.getUserId());
                 session.setAttribute("userRoll", storedUserInfo.getUserRoll());
 
-                return true;
+                storedUserInfo.setUserPwd(""); // hide user password;
+                return storedUserInfo;
         }
 
-        return false;
+        return null;
     }
 
     @GetMapping("/state")
