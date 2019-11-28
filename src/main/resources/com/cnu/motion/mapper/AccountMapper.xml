@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cnu.motion.mapper.AccountMapper">
-    <insert id="addeNewUser" parameterType="com.cnu.motion.DTO.UserDTO">
-        INSERT INTO Accounts(userId, userPwd, joinDate, userName, userPhone, userEmail, userBirth, userRoll)
-        VALUES (#{userId}, #{userPwd}, date_format(now(), '%y%m%c'), #{userName}, #{userPhone}, #{userEmail}, date_format(#{userBirth}, '%y%m%c'), "USER")
-    </insert>
+<insert id="addeNewUser" parameterType="com.cnu.motion.DTO.UserDTO">
+    INSERT INTO Accounts(userId, userPwd, joinDate, userName, userPhone, userEmail, userBirth, userRoll)
+    VALUES (#{userId}, #{userPwd}, date_format(now(), '%y%m%c'), #{userName}, #{userPhone}, #{userEmail}, date_format(#{userBirth}, '%y%m%c'), "USER")
+</insert>
 
+<<<<<<< HEAD
     <select id="getUserByUserId" parameterType="com.cnu.motion.DTO.UserDTO" resultType="com.cnu.motion.DTO.UserDTO">
         SELECT *
         FROM Accounts acnt
@@ -16,4 +17,11 @@
     <delete id="deleteUserByUserId" parameterType="com.cnu.motion.DTO.UserDTO">
         DELETE FROM Accounts WHERE userId = #{userId}
     </delete>
+=======
+<select id="getUserByUserId" parameterType="com.cnu.motion.DTO.UserDTO" resultType="com.cnu.motion.DTO.UserDTO">
+    SELECT *
+    FROM Accounts acnt
+    WHERE acnt.userId = #{userId}
+</select>
+>>>>>>> bef9d2eb8d054c03e663c6c7a7f357e98d019f42
 </mapper>
