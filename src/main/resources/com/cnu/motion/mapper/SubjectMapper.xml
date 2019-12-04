@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cnu.motion.mapper.SubjectMapper">
+    <insert id="postSubjects" parameterType="com.cnu.motion.DTO.SubjectDTO">
+            INSERT INTO Subject(name, professor)
+            VALUES (#{name}, #{professor})
+    </insert>
+
+</mapper>
