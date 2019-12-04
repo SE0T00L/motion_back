@@ -7,4 +7,21 @@
         FROM Exam ex
         WHERE ex.examId = #{examId}
     </select>
+
+    <select id="getDetailList" parameterType="com.cnu.motion.DTO.ExamDTO" resultType="com.cnu.motion.DTO.ExamDTO">
+        SELECT ex.id, ex.grade, ex.subjectid, ex.midorfinal, ex.registerdate, s.name, s.professor
+        FROM Exam ex, Subject s
+        WHERE ex.subjectId=s.id and ex.grade = #{grade}
+        <if test="name != '' and name != 'null'">
+        and s.name = #{name}
+        </if>
+        <if test="professor != '' and professor != 'null'">
+            and s.professor = #{professor}
+        </if>
+        <if test="midOrFinal == 1 or midOrFinal == 2">
+            and ex.midorfinal = #{midOrFinal}
+        </if>
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
 </mapper>
