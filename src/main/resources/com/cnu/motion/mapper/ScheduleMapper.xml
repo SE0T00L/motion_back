@@ -9,4 +9,9 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
+
+    <select id="getAllSchedule" resultType="com.cnu.motion.DTO.ScheduleDTO">
+        SELECT id, calendarId, title, location, state, start, end
+          FROM Schedule
+    </select>
 </mapper>

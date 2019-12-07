@@ -2,10 +2,9 @@ package com.cnu.motion.Schedule;
 
 import com.cnu.motion.DTO.ScheduleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/schedules")
@@ -25,5 +24,10 @@ public class ScheduleController {
         }
 
         return storedIndex;
+    }
+
+    @GetMapping
+    public List<ScheduleDTO> getAllSchedule() {
+        return scheduleService.getAllSchedule();
     }
 }

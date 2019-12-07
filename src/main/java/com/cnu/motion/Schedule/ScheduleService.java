@@ -5,6 +5,8 @@ import com.cnu.motion.mapper.ScheduleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ScheduleService {
     @Autowired
@@ -12,5 +14,9 @@ public class ScheduleService {
 
     public int addNewSchedule(ScheduleDTO schedule) {
         return scheduleMapper.addNewSchedule(schedule);
+    }
+
+    public List<ScheduleDTO> getAllSchedule() {
+        return scheduleMapper.getAllSchedule();
     }
 }
