@@ -12,4 +12,5 @@ public interface ScheduleMapper {
     int addNewSchedule(ScheduleDTO schedule);
     List<ScheduleDTO> getAllSchedule();
     boolean updateSchedule(ScheduleDTO schedule);
+    boolean deleteSchedule(ScheduleDTO schedule);
 }

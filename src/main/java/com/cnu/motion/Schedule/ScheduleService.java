@@ -23,4 +23,8 @@ public class ScheduleService {
     public boolean updateSchedule(ScheduleDTO schedule) {
         return scheduleMapper.updateSchedule(schedule);
     }
+
+    public boolean deleteSchedule(ScheduleDTO schedule) {
+        return scheduleMapper.deleteSchedule(schedule);
+    }
 }

@@ -42,4 +42,17 @@ public class ScheduleController {
 
         return true;
     }
+
+    @DeleteMapping
+    public boolean deleteSchedule(@RequestBody ScheduleDTO schedule) {
+        try {
+            scheduleService.deleteSchedule(schedule);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
 }

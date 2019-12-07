@@ -21,4 +21,9 @@
              , end = #{end}
          WHERE id = #{id}
     </update>
+
+    <delete id="deleteSchedule" parameterType="com.cnu.motion.DTO.ScheduleDTO">
+        DELETE FROM Schedule
+         WHERE id = #{id}
+    </delete>
 </mapper>
