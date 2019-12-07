@@ -16,7 +16,7 @@ public class SubjectService {
     SubjectMapper subjectMapper;
 
     public List<SubjectDTO> getSubjects() {
-        return subjectMapper.getSubjectsByGrade();
+        return subjectMapper.getSubjects();
     }
 
     @Transactional(rollbackFor = SQLException.class)
