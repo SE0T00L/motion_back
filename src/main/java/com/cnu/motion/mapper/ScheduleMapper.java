@@ -11,4 +11,5 @@ import java.util.List;
 public interface ScheduleMapper {
     int addNewSchedule(ScheduleDTO schedule);
     List<ScheduleDTO> getAllSchedule();
+    boolean updateSchedule(ScheduleDTO schedule);
 }

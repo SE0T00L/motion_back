@@ -14,4 +14,11 @@
         SELECT id, calendarId, title, location, state, start, end
           FROM Schedule
     </select>
+
+    <update id="updateSchedule" parameterType="com.cnu.motion.DTO.ScheduleDTO">
+        UPDATE Schedule
+           SET start = #{start}
+             , end = #{end}
+         WHERE id = #{id}
+    </update>
 </mapper>

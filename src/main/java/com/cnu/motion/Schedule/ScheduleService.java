@@ -19,4 +19,8 @@ public class ScheduleService {
     public List<ScheduleDTO> getAllSchedule() {
         return scheduleMapper.getAllSchedule();
     }
+
+    public boolean updateSchedule(ScheduleDTO schedule) {
+        return scheduleMapper.updateSchedule(schedule);
+    }
 }

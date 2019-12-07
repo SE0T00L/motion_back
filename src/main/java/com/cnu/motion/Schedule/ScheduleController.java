@@ -30,4 +30,16 @@ public class ScheduleController {
     public List<ScheduleDTO> getAllSchedule() {
         return scheduleService.getAllSchedule();
     }
+
+    @PutMapping
+    public boolean updateSchedule(@RequestBody ScheduleDTO schedule) {
+        try {
+            scheduleService.updateSchedule(schedule);
+        }
+        catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
 }
