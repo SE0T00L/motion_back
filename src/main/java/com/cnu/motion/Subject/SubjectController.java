@@ -2,10 +2,9 @@ package com.cnu.motion.Subject;
 
 import com.cnu.motion.DTO.SubjectDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/subjects")
@@ -14,6 +13,11 @@ public class SubjectController {
     @Autowired
     SubjectService subjectService;
 
+
+    @GetMapping()
+    public List<SubjectDTO> getSubjects() {
+        return subjectService.getSubjects();
+    }
 
     @PostMapping()
     public String postSubjects(@RequestBody SubjectDTO subject){

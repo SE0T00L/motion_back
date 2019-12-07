@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cnu.motion.mapper.SubjectMapper">
+    <select id="getSubjects" resultType="com.cnu.motion.DTO.SubjectDTO">
+        SELECT id, name, professor
+          FROM Subject
+         ORDER BY name, professor
+    </select>
+
     <insert id="postSubjects" parameterType="com.cnu.motion.DTO.SubjectDTO">
             INSERT INTO Subject(name, professor)
             VALUES (#{name}, #{professor})
