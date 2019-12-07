@@ -2,10 +2,15 @@
         <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cnu.motion.mapper.AccountMapper">
-    <insert id="addeNewUser" parameterType="com.cnu.motion.DTO.UserDTO">
+    <insert id="addNewUser" parameterType="com.cnu.motion.DTO.UserDTO">
         INSERT INTO Accounts(userId, userPwd, joinDate, userName, userPhone, userEmail, userBirth, userRoll)
         VALUES (#{userId}, #{userPwd}, date_format(now(), '%y%m%c'), #{userName}, #{userPhone}, #{userEmail}, date_format(#{userBirth}, '%y%m%c'), "USER")
     </insert>
+
+    <select id="getAllUser" resultType="com.cnu.motion.DTO.UserDTO">
+        SELECT *
+          FROM Accounts
+    </select>
 
     <select id="getUserByUserId" parameterType="com.cnu.motion.DTO.UserDTO" resultType="com.cnu.motion.DTO.UserDTO">
         SELECT *

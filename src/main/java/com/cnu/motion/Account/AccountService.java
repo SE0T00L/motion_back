@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -27,6 +28,8 @@ public class AccountService {
             throw new Exception();
         }
     }
+
+    public List<UserDTO> getAllUser() { return accountMapper.getAllUser(); }
 
     public UserDTO getUserByUserId(UserDTO user) {
         return accountMapper.getUserByUserId(user);

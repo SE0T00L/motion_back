@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -29,6 +30,11 @@ public class AccountController {
         }
 
         return "success";
+    }
+
+    @GetMapping
+    public List<UserDTO> getAllUser() {
+        return accountService.getAllUser();
     }
 
     @PostMapping("/logout")
