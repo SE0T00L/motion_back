@@ -7,7 +7,7 @@ import java.util.Date;
 @Data
 public class ScheduleDTO {
     int id;
-    int calendarId;
+    String calendarId;
     String title;
     String location;
     String state;

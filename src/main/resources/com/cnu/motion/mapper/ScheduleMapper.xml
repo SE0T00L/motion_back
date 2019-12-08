@@ -17,7 +17,11 @@
 
     <update id="updateSchedule" parameterType="com.cnu.motion.DTO.ScheduleDTO">
         UPDATE Schedule
-           SET start = #{start}
+           SET calendarId = #{calendarId}
+             , title = #{title}
+             , location = #{location}
+             , state = #{state}
+             , start = #{start}
              , end = #{end}
          WHERE id = #{id}
     </update>
