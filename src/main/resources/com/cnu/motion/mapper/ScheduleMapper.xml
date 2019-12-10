@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cnu.motion.mapper.ScheduleMapper">
+    <insert id="addNewSchedule" parameterType="com.cnu.motion.DTO.ScheduleDTO">
+        INSERT INTO Schedule(calendarId, title, location, state, start, end)
+        VALUES(#{calendarId}, #{title}, #{location}, #{state}, #{start}, #{end})
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <select id="getAllSchedule" resultType="com.cnu.motion.DTO.ScheduleDTO">
+        SELECT id, calendarId, title, location, state, start, end
+          FROM Schedule
+    </select>
+
+    <update id="updateSchedule" parameterType="com.cnu.motion.DTO.ScheduleDTO">
+        UPDATE Schedule
+           SET calendarId = #{calendarId}
+             , title = #{title}
+             , location = #{location}
+             , state = #{state}
+             , start = #{start}
+             , end = #{end}
+         WHERE id = #{id}
+    </update>
+
+    <delete id="deleteSchedule" parameterType="com.cnu.motion.DTO.ScheduleDTO">
+        DELETE FROM Schedule
+         WHERE id = #{id}
+    </delete>
+</mapper>
